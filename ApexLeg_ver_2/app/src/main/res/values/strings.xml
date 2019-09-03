@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ApexLeg_ver_1.0</string>
+    <string name="button_find_description">Find description</string>
+
+    <string-array name="opportunities">
+        <item>skills</item>
+        <item>vote</item>
+        <item>tactics</item>
+    </string-array>
+
+    <string-array name="description_of_bloodhound">
+        <item>It is bloodhound skills</item>
+        <item>It is bloodhound vote</item>
+        <item>It is bloodhound tactics</item>
+    </string-array>
+
+    <string-array name="description_of_gibraltar">
+        <item>It is gibraltar skills</item>
+        <item>It is gibraltar vote</item>
+        <item>It is gibraltar tactics</item>
+    </string-array>
+
+</resources>
