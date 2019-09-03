@@ -33,6 +33,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        wasRunning = isRunning;
+        isRunning = false;
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        isRunning = wasRunning;
+    }
+
+    /*@Override
     protected void onStop() {
         super.onStop();
         wasRunning = isRunning;
@@ -43,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         isRunning = wasRunning;
-    }
+    }*/
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
