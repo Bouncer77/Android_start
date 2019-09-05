@@ -32,17 +32,22 @@
         app:layout_constraintTop_toBottomOf="@id/textViewHello">
 
         <RadioButton
+            android:id="@+id/radioButtonTea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tea"
             android:layout_margin="8dp"
+            android:checked="true"
+            android:onClick="onClickChangeDrink"
             android:textColor="@color/white"/>
 
         <RadioButton
+            android:id="@+id/radioButtonCoffe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/coffe"
             android:layout_margin="8dp"
+            android:onClick="onClickChangeDrink"
             android:textColor="@color/white"/>
 
     </RadioGroup>
@@ -138,6 +143,7 @@
         android:layout_height="0dp"
         android:contentDescription="@string/buttonSendDescription"
         android:src="@drawable/button"
+        android:onClick="onClickSendOrder"
         app:layout_constraintTop_toBottomOf="@id/spinnerCoffe"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
