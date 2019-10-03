@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WineLot</string>
+    <string name="marina_name">Marina Pavlova</string>
+    <string name="lot_hint">Введите номер лота: L****</string>
+</resources>
