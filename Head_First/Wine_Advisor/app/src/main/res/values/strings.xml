@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Wine Advisor</string>
+    <string name="find_wine">Find Wine</string>
+    <string name="grapes_varieties">CHOOSE MAJOR GRAPES VARIETIES</string>
+    <string-array name="grape_color">
+        <item>Белый</item>
+        <item>Красный</item>
+    </string-array>
+
+    <string-array name="type_of_white_wine">
+        <item name="white_wine">Белый</item>
+        <item name="red_wine">Красный</item>
+    </string-array>
+
+    <string-array name="type_of_red_wine">
+        <item>Белый</item>
+        <item>Красный</item>
+    </string-array>
+
+</resources>
