@@ -2,19 +2,29 @@
     <string name="app_name">Wine Advisor</string>
     <string name="find_wine">Find Wine</string>
     <string name="grapes_varieties">CHOOSE MAJOR GRAPES VARIETIES</string>
+    <string name="grape_color_item00">White</string>
+    <string name="grape_color_item01">Red</string>
+
+    <string name="type_of_white_wine_item00">Chardonnay</string>
+    <string name="type_of_white_wine_item01">Sauvignon Blanc</string>
+
+    <string name="type_of_red_wine_item00">CabernetSauvignon</string>
+    <string name="type_of_red_wine_item01">Merlot</string>
+
+
     <string-array name="grape_color">
-        <item>Белый</item>
-        <item>Красный</item>
+        <item>@string/grape_color_item00</item>
+        <item>@string/grape_color_item01</item>
     </string-array>
 
     <string-array name="type_of_white_wine">
-        <item name="white_wine">Белый</item>
-        <item name="red_wine">Красный</item>
+        <item>@string/type_of_white_wine_item00</item>
+        <item>@string/type_of_white_wine_item01</item>
     </string-array>
 
     <string-array name="type_of_red_wine">
-        <item>Белый</item>
-        <item>Красный</item>
+        <item>@string/type_of_red_wine_item00</item>
+        <item>@string/type_of_red_wine_item01</item>
     </string-array>
 
 </resources>

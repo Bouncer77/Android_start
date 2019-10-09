@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wine Advisor</string>
+    <string name="find_wine">Найти информацию о винах</string>
+    <string name="grapes_varieties">Выберите цвет вина</string>
+    <string name="grape_color_item00">Белый</string>
+    <string name="grape_color_item01">Красный</string>
+    <string name="type_of_red_wine_item00">Каберне Совиньон (CabernetSauvignon)</string>
+    <string name="type_of_white_wine_item00">Шардоне (Chardonnay)</string>
+    <string name="type_of_white_wine_item01">Совиньон Блан (Sauvignon Blanc)</string>
+    <string name="type_of_red_wine_item01">Мерло (Merlot)</string>
+</resources>
