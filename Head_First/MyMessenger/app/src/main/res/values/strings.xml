@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Messenger</string>
+    <string name="input_msg">Введите текст</string>
+    <string name="button_send">Отправить сообщение</string>
+    <string name="button_send_other_app">Отправить дригим приложением</string>
+    <string name="button_send_always_app">Отправить приложением по умолчанию</string>
+    <string name="chooser">Отправить сообщение через ...</string>
+</resources>
