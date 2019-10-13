@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewTimer;
 
     private int seconds = 0;
+    private int milliseconds_x_125 = 0;
     private boolean isRunning = false;
     private boolean wasRunning = false;
 
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickResetTimer(View view) {
         isRunning = false;
         seconds = 0;
+        milliseconds_x_125 = 0;
     }
 
     private void runTimer(){
@@ -89,13 +91,19 @@ public class MainActivity extends AppCompatActivity {
                 int minutes = (seconds % 3600) / 60;
                 int secs = seconds % 60;
 
-                String time = String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, secs);
+                String time = String.format(Locale.getDefault(), "%d:%02d:%02d:%03d",
+                        hours, minutes, secs, milliseconds_x_125);
                 textViewTimer.setText(time);
 
                 if(isRunning) {
-                    ++seconds;
+                    milliseconds_x_125 += 125;
+                    if (milliseconds_x_125 >= 1000) {
+                        ++seconds;
+                        milliseconds_x_125 = 0;
+                    }
+
                 }
-                handler.postDelayed(this, 1000);
+                handler.postDelayed(this, 125);
             }
         });
     }
