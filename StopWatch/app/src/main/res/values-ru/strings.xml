@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StopWatch</string>
+    <string name="button_pause">Пауза</string>
+    <string name="button_reset">Сброс</string>
+    <string name="button_settings">Настройки</string>
+    <string name="button_start">Старт</string>
+    <string name="choose_language">Выберите язык:</string>
+    <string name="lang_ru">Русский</string>
+    <string name="stop_timer_when_app_close">Останавливать таймер, когда приложение свернуто</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="lang_en">Английский</string>
+</resources>

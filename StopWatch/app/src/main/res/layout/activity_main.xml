@@ -21,41 +21,60 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTimer">
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer"
+        app:layout_constraintVertical_bias="0.133">
 
         <Button
             android:id="@+id/button_start"
-            android:textColor="@color/colorGreen"
-            android:background="@color/colorOrange"
             android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_margin="30dp"
+            android:background="@color/colorOrange"
             android:onClick="onClickStartTimer"
-            android:text="@string/button_start" />
+            android:text="@string/button_start"
+            android:textColor="@color/colorGreen" />
 
         <Button
             android:id="@+id/button_pause"
-            android:background="@color/colorOrange"
             android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_margin="30dp"
+            android:background="@color/colorOrange"
             android:onClick="onClickPauseTimer"
             android:text="@string/button_pause" />
 
         <Button
             android:id="@+id/button_reset"
-            android:textColor="@color/colorRed"
-            android:background="@color/colorOrange"
             android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_margin="30dp"
+            android:background="@color/colorOrange"
             android:onClick="onClickResetTimer"
-            android:text="@string/button_reset" />
+            android:text="@string/button_reset"
+            android:textColor="@color/colorRed" />
+
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorOrange"
+        android:contentDescription="@string/button_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.123"
+        app:srcCompat="@drawable/settings"
+        android:onClick="onClickOpenSettings"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
