@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import static com.hello.stopwatch.SettingsActivity.*;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView textViewTimer;
+    private TextView textViewSettingsInfo;
     private String languageToLoad  = "en"; // your language
 
 
@@ -26,20 +29,41 @@ public class MainActivity extends AppCompatActivity {
       ние Stopwatch становится невидимым, и снова запускается,
       когда приложение снова оказывается на экране.*/
     public boolean background_running = true;
-    public boolean paused_running = false;
+    public boolean paused_running = true;
     public boolean show_milliseconds = true;
+    public int milliseconds_delta = 125; // по умолчанию 125 миллисекунд
 
     public static final String ISRUN = "isRunning"; // флаг отсчета времени
     public static final String WASRUN = "wasRunning"; // флаг отсчета времени до приостановки активности
     public static final String SEC = "seconds";
     public static final String MSEC = "milliseconds";
-    private int milliseconds_delta = 125; // рекомендую 125 миллисекунд
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         textViewTimer = findViewById(R.id.textViewTimer);
+
+        textViewSettingsInfo = findViewById(R.id.textViewSettingsInfo);
+
+        Intent intent = getIntent();
+        background_running = (boolean) intent.getBooleanExtra(SWBACKGROUND, true);
+        paused_running = (boolean) intent.getBooleanExtra(SWPAUSE, true);
+        show_milliseconds = (boolean) intent.getBooleanExtra(SWMILLISECONDS, true);
+        milliseconds_delta = (int) intent.getIntExtra(NUMMILLISEC, 125);
+        String lang = intent.getStringExtra(LANG);
+        if (lang == null) lang = "en";
+
+        String settingsInfo = Boolean.toString(background_running) + "   " +
+                Boolean.toString(paused_running) + "   " +
+                Boolean.toString(show_milliseconds) + "   " +
+                Integer.toString(milliseconds_delta) + "   " +
+                lang;
+        textViewSettingsInfo.setText(settingsInfo);
+
+
+        //boolean isChecked = getIntent().getBooleanExtra("switch", false);
 
         // Получить предыдущее со-
         //стояние секундомера, если

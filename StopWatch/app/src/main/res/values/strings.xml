@@ -15,10 +15,11 @@
     <string name="swith_milliseconds_act">Do not show milliseconds</string>
     <string name="number_millisec_delta">Millisecond increment: </string>
     <string name="number_millisecond_hint" translatable="false">125</string>
+    <string name="button_apply_settings">Apply Settings</string>
 
     <string-array name="spiner_select_language">
-        <item>@string/lang_ru</item>
         <item>@string/lang_en</item>
+        <item>@string/lang_ru</item>
     </string-array>
 
 </resources>
