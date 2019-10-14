@@ -18,18 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     // таймер 1 (НЕ Выключается, когда активность перестает быть видимой для пользователя)
-    private int seconds = 0;
+    private int seconds = 0; // количество прошедших секунд
     private int milliseconds_x_125 = 0;
     private boolean isRunning = false; // секундомер работает?
     private boolean wasRunning = false; // был запущен? (для смены оринтации экрана)
 
-    public static final String ISRUN = "isRunning";
-    public static final String WASRUN = "wasRunning";
+    /*секундомер останавливается, если приложе-
+      ние Stopwatch становится невидимым, и снова запускается,
+      когда приложение снова оказывается на экране.*/
+    public boolean background_running = true;
+    public boolean paused_running = false;
+    public static final String ISRUN = "isRunning"; // флаг отсчета времени
+    public static final String WASRUN = "wasRunning"; // флаг отсчета времени до приостановки активности
     public static final String SEC = "seconds";
     public static final String MSEC = "milliseconds";
     public static final int MSECINCREMENT = 125;
-
-    // таймер 2 (Выключается, когда активность перестает быть видимой для пользователя)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +46,6 @@ public class MainActivity extends AppCompatActivity {
             wasRunning = savedInstanceState.getBoolean(WASRUN);
         }
         runTimer();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        wasRunning = isRunning;
-        isRunning = false;
-    }
-
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        isRunning = wasRunning;
     }
 
     @Override
@@ -109,10 +99,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    protected void onStart(){
+        super.onStart();
+
+        if (background_running) return;
+
+        if (wasRunning) {
+            isRunning = true;
+            wasRunning = false;
+        }
+    }
+
+    @Override
+    protected void onStop(){
         super.onStop();
 
+        if (background_running) return;
+
+        wasRunning = isRunning;
+        isRunning = false;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (paused_running) return;
+
+        if (wasRunning) {
+            isRunning = true;
+            wasRunning = false;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (paused_running) return;
+
+        wasRunning = isRunning;
+        isRunning = false;
+    }
+
+
+
 
     public void onClickOpenSettings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);

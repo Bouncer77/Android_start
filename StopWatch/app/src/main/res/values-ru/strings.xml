@@ -7,7 +7,8 @@
     <string name="button_start">Старт</string>
     <string name="choose_language">Выберите язык:</string>
     <string name="lang_ru">Русский</string>
-    <string name="stop_timer_when_app_close">Останавливать таймер, когда приложение свернуто</string>
     <string name="title_activity_settings">Настройки</string>
     <string name="lang_en">Английский</string>
+    <string name="switch_background_act">Останавливать таймер, когда приложение свернуто</string>
+    <string name="switch_paused_act">Останавливать таймер, когда приложение приостановленно</string>
 </resources>

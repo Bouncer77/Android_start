@@ -4,13 +4,14 @@
     <string name="init_time_sec" translatable="false">0:00:00</string>
     <string name="title_activity_settings">Settings</string>
     <string name="choose_language">Select:</string>
-    <string name="stop_timer_when_app_close">Stop timer when application is minimized</string>
+    <string name="switch_background_act">Stop timer when application on the background</string>
     <string name="lang_ru">Russian</string>
     <string name="button_start">Start</string>
     <string name="button_settings">Settings</string>
     <string name="button_reset">Reset</string>
     <string name="button_pause">Stop</string>
     <string name="lang_en">English</string>
+    <string name="switch_paused_act">Stop timer when application paused</string>
 
     <string-array name="spiner_select_language">
         <item>@string/lang_ru</item>

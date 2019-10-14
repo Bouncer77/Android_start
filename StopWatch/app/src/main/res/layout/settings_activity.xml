@@ -31,7 +31,13 @@
             android:id="@+id/switchStopBackgroundApp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/stop_timer_when_app_close" />
+            android:text="@string/switch_background_act" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/switch_paused_act" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
