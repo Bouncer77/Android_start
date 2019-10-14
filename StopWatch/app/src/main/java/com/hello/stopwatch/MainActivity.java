@@ -3,7 +3,6 @@ package com.hello.stopwatch;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     // таймер 1 (НЕ Выключается, когда активность перестает быть видимой для пользователя)
     private int seconds = 0; // количество прошедших секунд
-    private int milliseconds_x_125 = 0;
+    private int milliseconds_timer = 0; // количество прошедших миллисекунд
     private boolean isRunning = false; // секундомер работает?
     private boolean wasRunning = false; // был запущен? (для смены оринтации экрана)
 
@@ -28,31 +27,40 @@ public class MainActivity extends AppCompatActivity {
       когда приложение снова оказывается на экране.*/
     public boolean background_running = true;
     public boolean paused_running = false;
+    public boolean show_milliseconds = true;
+
     public static final String ISRUN = "isRunning"; // флаг отсчета времени
     public static final String WASRUN = "wasRunning"; // флаг отсчета времени до приостановки активности
     public static final String SEC = "seconds";
     public static final String MSEC = "milliseconds";
-    public static final int MSECINCREMENT = 125;
+    private int milliseconds_delta = 125; // рекомендую 125 миллисекунд
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textViewTimer = findViewById(R.id.textViewTimer);
+
+        // Получить предыдущее со-
+        //стояние секундомера, если
+        //активность была уничто-
+        //жена и создана заново.
         if (savedInstanceState != null) {
             seconds = savedInstanceState.getInt(SEC);
-            milliseconds_x_125 = savedInstanceState.getInt(MSEC);
+            milliseconds_timer = savedInstanceState.getInt(MSEC);
             isRunning = savedInstanceState.getBoolean(ISRUN);
             wasRunning = savedInstanceState.getBoolean(WASRUN);
         }
         runTimer();
     }
 
+    // Сохранить состояние секундомера,
+    //если он готовится к уничтожению.
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(SEC, seconds);
-        outState.putInt(MSEC, milliseconds_x_125);
+        outState.putInt(MSEC, milliseconds_timer);
         outState.putBoolean(ISRUN, isRunning);
         outState.putBoolean(WASRUN, wasRunning);
     }
@@ -68,9 +76,12 @@ public class MainActivity extends AppCompatActivity {
     public void onClickResetTimer(View view) {
         isRunning = false;
         seconds = 0;
-        milliseconds_x_125 = 0;
+        milliseconds_timer = 0;
     }
 
+    // Обновление показателей таймера
+    // Метод runTimer() использует объект Handler
+    //для увеличения числа секунд и обновления надписи
     private void runTimer(){
 
         final Handler handler = new Handler();
@@ -81,19 +92,25 @@ public class MainActivity extends AppCompatActivity {
                 int minutes = (seconds % 3600) / 60;
                 int secs = seconds % 60;
 
-                String time = String.format(Locale.getDefault(), "%d:%02d:%02d:%03d",
-                        hours, minutes, secs, milliseconds_x_125);
+                String time;
+                if (show_milliseconds) {
+                    time = String.format(Locale.getDefault(), "%d:%02d:%02d:%03d",
+                            hours, minutes, secs, milliseconds_timer);
+                } else {
+                    time = String.format(Locale.getDefault(), "%d:%02d:%02d",
+                            hours, minutes, secs);
+                }
                 textViewTimer.setText(time);
 
                 if(isRunning) {
-                    milliseconds_x_125 += MSECINCREMENT;
-                    if (milliseconds_x_125 >= 1000) {
+                    milliseconds_timer += milliseconds_delta;
+                    if (milliseconds_timer >= 1000) {
                         ++seconds;
-                        milliseconds_x_125 -= 1000;
+                        milliseconds_timer -= 1000;
                     }
 
                 }
-                handler.postDelayed(this, MSECINCREMENT);
+                handler.postDelayed(this, milliseconds_delta);
             }
         });
     }
@@ -110,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Если активность свернута,
+    // остановить отсчет времени (при backgroun_running == false)
+    // включенный Switch номер 1 (по умолчанию выключен)
     @Override
     protected void onStop(){
         super.onStop();
@@ -132,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Если активность приостанавливается,
+    //остановить отсчет времени (при paused_running == false)
+    // включенный Switch номер 2 (по умолчанию выключен)
     @Override
     protected void onPause() {
         super.onPause();

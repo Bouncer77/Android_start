@@ -11,4 +11,6 @@
     <string name="lang_en">Английский</string>
     <string name="switch_background_act">Останавливать таймер, когда приложение свернуто</string>
     <string name="switch_paused_act">Останавливать таймер, когда приложение приостановленно</string>
+    <string name="swith_milliseconds_act">Не показывать миллисекунды</string>
+    <string name="number_millisec_delta">"Приращение в миллисекундах: "</string>
 </resources>

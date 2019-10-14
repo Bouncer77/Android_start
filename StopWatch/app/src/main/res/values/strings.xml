@@ -12,6 +12,9 @@
     <string name="button_pause">Stop</string>
     <string name="lang_en">English</string>
     <string name="switch_paused_act">Stop timer when application paused</string>
+    <string name="swith_milliseconds_act">Do not show milliseconds</string>
+    <string name="number_millisec_delta">Millisecond increment: </string>
+    <string name="number_millisecond_hint" translatable="false">125</string>
 
     <string-array name="spiner_select_language">
         <item>@string/lang_ru</item>
