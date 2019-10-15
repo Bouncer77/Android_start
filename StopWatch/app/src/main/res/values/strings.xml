@@ -17,6 +17,11 @@
     <string name="number_millisecond_hint" translatable="false">125</string>
     <string name="button_apply_settings">Apply Settings</string>
 
+    <string name="support_email_subject_hint">Email Subject</string>
+    <string name="support_msg_hint">Message</string>
+    <string name="support_button_send">Send</string>
+
+
     <string-array name="spiner_select_language">
         <item>@string/lang_en</item>
         <item>@string/lang_ru</item>

@@ -3,4 +3,5 @@
     <string name="button_send">Отправить</string>
     <string name="hint_enter_msg">Введите сообщение</string>
     <string name="choser_title">Как вы хотите отправить сообщение</string>
+
 </resources>

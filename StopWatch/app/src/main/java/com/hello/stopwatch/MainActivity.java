@@ -3,20 +3,25 @@ package com.hello.stopwatch;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.Locale;
 
 import static com.hello.stopwatch.SettingsActivity.*;
+import static java.util.Locale.getDefault;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView textViewTimer;
     private TextView textViewSettingsInfo;
-    private String languageToLoad  = "en"; // your language
+    private String language  = Locale.getDefault().getDisplayLanguage();; // your language
+    private int spinnerlang = 0; // TODO написать номер языка в спинере настроки
 
 
     // таймер 1 (НЕ Выключается, когда активность перестает быть видимой для пользователя)
@@ -24,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private int milliseconds_timer = 0; // количество прошедших миллисекунд
     private boolean isRunning = false; // секундомер работает?
     private boolean wasRunning = false; // был запущен? (для смены оринтации экрана)
+
+    //private Locale myLocale = Locale.getDefault();
 
     /*секундомер останавливается, если приложе-
       ние Stopwatch становится невидимым, и снова запускается,
@@ -52,15 +59,20 @@ public class MainActivity extends AppCompatActivity {
         paused_running = (boolean) intent.getBooleanExtra(SWPAUSE, true);
         show_milliseconds = (boolean) intent.getBooleanExtra(SWMILLISECONDS, true);
         milliseconds_delta = (int) intent.getIntExtra(NUMMILLISEC, 125);
+        spinnerlang = (int) intent.getIntExtra(LANGINT, 0);
         String lang = intent.getStringExtra(LANG);
         if (lang == null) lang = "en";
+        //if (!language.equals(lang)) this.setLocale(lang);
 
         String settingsInfo = Boolean.toString(background_running) + "   " +
                 Boolean.toString(paused_running) + "   " +
                 Boolean.toString(show_milliseconds) + "   " +
                 Integer.toString(milliseconds_delta) + "   " +
-                lang;
+                language + "   " + lang;
         textViewSettingsInfo.setText(settingsInfo);
+
+
+
 
 
         //boolean isChecked = getIntent().getBooleanExtra("switch", false);
@@ -77,6 +89,20 @@ public class MainActivity extends AppCompatActivity {
         }
         runTimer();
     }
+
+
+    // Почему-то так не рекомендовано делать
+    /*public void setLocale(String lang) {
+        language = lang;
+        myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+    }*/
 
     // Сохранить состояние секундомера,
     //если он готовится к уничтожению.
@@ -118,10 +144,10 @@ public class MainActivity extends AppCompatActivity {
 
                 String time;
                 if (show_milliseconds) {
-                    time = String.format(Locale.getDefault(), "%d:%02d:%02d:%03d",
+                    time = String.format(getDefault(), "%d:%02d:%02d:%03d",
                             hours, minutes, secs, milliseconds_timer);
                 } else {
-                    time = String.format(Locale.getDefault(), "%d:%02d:%02d",
+                    time = String.format(getDefault(), "%d:%02d:%02d",
                             hours, minutes, secs);
                 }
                 textViewTimer.setText(time);
@@ -194,6 +220,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickOpenSettings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra(SWBACKGROUND, !background_running);
+        intent.putExtra(SWPAUSE, !paused_running);
+        intent.putExtra(SWMILLISECONDS, !show_milliseconds);
+        intent.putExtra(NUMMILLISEC, milliseconds_delta);
+        intent.putExtra(LANGINT, spinnerlang);
         startActivity(intent);
 
         /*if (languageToLoad.equals("en")) {

@@ -13,6 +13,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Spinner selectLang;
     public static final String LANG = "language";
+    public static final String LANGINT = "languageint";
 
     private Switch swbackgroundRun;
     public static final String SWBACKGROUND = "swbackground";
@@ -30,11 +31,25 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+
         selectLang = (Spinner) findViewById(R.id.spinnerLanguage);
         swbackgroundRun = (Switch) findViewById(R.id.switchBackground);
         swpauseRun = (Switch) findViewById(R.id.switchPause);
         swmilliseconds = (Switch) findViewById(R.id.switchMilliseconds);
         numMilliseconds = (EditText) findViewById(R.id.editTextNumMilliseconds);
+
+        Intent intent = getIntent();
+        boolean swbg = intent.getBooleanExtra(SWBACKGROUND, false);
+        boolean swp = intent.getBooleanExtra(SWPAUSE, false);
+        boolean swms = intent.getBooleanExtra(SWMILLISECONDS, false);
+        int numMsec = intent.getIntExtra(NUMMILLISEC, 125);
+        int numSpinner = intent.getIntExtra(LANGINT, 0);
+
+        swbackgroundRun.setChecked(swbg);
+        swpauseRun.setChecked(swp);
+        swmilliseconds.setChecked(swms);
+        numMilliseconds.setText(Integer.toString(numMsec));
+
     }
 
     public void onClickApplySettings(View view) {
@@ -47,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         mIntent.putExtra(SWPAUSE, !(swpauseRun.isChecked()));
         mIntent.putExtra(SWMILLISECONDS, !(swmilliseconds.isChecked()));
         mIntent.putExtra(NUMMILLISEC, num);
+        mIntent.putExtra(LANGINT, selectLang.getSelectedItemPosition());
         startActivity(mIntent);
     }
 

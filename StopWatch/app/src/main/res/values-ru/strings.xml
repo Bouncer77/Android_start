@@ -14,4 +14,7 @@
     <string name="swith_milliseconds_act">Не показывать миллисекунды</string>
     <string name="number_millisec_delta">"Приращение в миллисекундах: "</string>
     <string name="button_apply_settings">Применить настройки</string>
+    <string name="support_button_send">Отправить</string>
+    <string name="support_msg_hint">Сообщение</string>
+    <string name="support_email_subject_hint">Тема</string>
 </resources>
