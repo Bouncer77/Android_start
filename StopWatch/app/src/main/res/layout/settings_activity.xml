@@ -64,7 +64,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/number_millisecond_hint"
                 android:maxLength="3"
-                android:inputType="number" />
+                android:inputType="number"
+                android:hint="@string/number_millisecond_hint"
+                android:importantForAutofill="no" />
 
         </LinearLayout>
 
@@ -74,7 +76,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickApplySettings"
+            android:textStyle="bold"
             android:text="@string/button_apply_settings" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButtonAutor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/settings_about_author"
+                android:onClick="onClickAutor"
+                app:srcCompat="@drawable/baseline_copyright_24" />
+
+            <ImageButton
+                android:id="@+id/imageButtonSupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/settings_support"
+                android:onClick="onClickSupport"
+                app:srcCompat="@drawable/baseline_announcement_24" />
+
+            <ImageButton
+                android:id="@+id/imageButtonVote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/settings_vote"
+                android:onClick="onClickVote"
+                app:srcCompat="@drawable/baseline_favorite_24" />
+
+            <ImageButton
+                android:id="@+id/imageButtonShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/settings_share"
+                android:onClick="onClickShare"
+                app:srcCompat="@drawable/baseline_share_24" />
+        </LinearLayout>
 
     </LinearLayout>
 

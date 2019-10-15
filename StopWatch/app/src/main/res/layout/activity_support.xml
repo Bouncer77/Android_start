@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailSubject"/>
+        android:inputType="textEmailSubject"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextMSG"
@@ -25,7 +26,8 @@
         android:gravity="top"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textMultiLine|textCapSentences|textAutoCorrect|textAutoComplete"/>
+        android:inputType="textMultiLine|textCapSentences|textAutoCorrect|textAutoComplete"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/buttonSupportSend"
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorOrange"
         android:textColor="@color/colorGreen"
+        android:onClick="onClickSendMsgToSupport"
         android:layout_gravity="end"
         android:text="@string/support_button_send" />
 </LinearLayout>

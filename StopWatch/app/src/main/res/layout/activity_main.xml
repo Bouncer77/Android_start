@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:textColor="@color/colorRed"
             android:background="@color/colorOrange"
-            android:onClick="onClickPauseTimer"
+            android:onClick="onClickResetTimer"
             android:text="@string/button_reset"
             android:textSize="24sp"
             android:shadowColor="@color/colorDark"

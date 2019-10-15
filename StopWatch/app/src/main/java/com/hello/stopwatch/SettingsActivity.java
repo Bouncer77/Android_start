@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -83,5 +84,30 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
         return lang;
+    }
+
+    public void onClickShare(View view) {
+        showToast("in developing");
+        //Intent chosenIntent = Intent.createChooser(intent, getString(R.string.support_choser_title));
+        //startActivity(chosenIntent);
+    }
+
+    public void onClickVote(View view) {
+        showToast("in developing");
+    }
+
+    public void onClickSupport(View view) {
+        Intent intent = new Intent(this, Support.class);
+        startActivity(intent);
+    }
+
+    public void onClickAutor(View view) {
+        showToast("Ivan Kosenkov");
+    }
+
+    private void showToast(CharSequence text) {
+        int duraction = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(this, text, duraction);
+        toast.show();
     }
 }

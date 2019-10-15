@@ -232,19 +232,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(NUMMILLISEC, milliseconds_delta);
         intent.putExtra(LANGINT, spinnerlang);
         startActivity(intent);
-
-        /*if (languageToLoad.equals("en")) {
-            languageToLoad = "ru";
-        } else {
-            languageToLoad = "en";
-        }
-
-        Locale locale = new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());
-        this.setContentView(R.layout.activity_main);*/
     }
 }

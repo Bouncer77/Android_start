@@ -17,4 +17,9 @@
     <string name="support_button_send">Отправить</string>
     <string name="support_msg_hint">Сообщение</string>
     <string name="support_email_subject_hint">Тема</string>
+    <string name="settings_about_author">автор</string>
+    <string name="settings_share">поделиться</string>
+    <string name="settings_support">написать в техподдержку</string>
+    <string name="settings_vote">проголосовать</string>
+    <string name="support_choser_title">Отправить сообщение через ...</string>
 </resources>
