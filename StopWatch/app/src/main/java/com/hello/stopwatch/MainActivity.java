@@ -118,21 +118,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartTimer(View view) {
         isRunning = true;
-
-        CharSequence text = getString(R.string.button_start);
-        int duraction = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(this, text, duraction);
-        toast.show();
+        showToast(getString(R.string.button_start));
     }
 
     public void onClickPauseTimer(View view) {
+
         isRunning = false;
+        showToast(getString(R.string.button_pause));
     }
 
     public void onClickResetTimer(View view) {
         isRunning = false;
         seconds = 0;
         milliseconds_timer = 0;
+        showToast(getString(R.string.button_reset));
     }
 
     // Обновление показателей таймера
@@ -232,5 +231,11 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(NUMMILLISEC, milliseconds_delta);
         intent.putExtra(LANGINT, spinnerlang);
         startActivity(intent);
+    }
+
+    public void showToast(CharSequence text) {
+        int duraction = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(this, text, duraction);
+        toast.show();
     }
 }

@@ -87,9 +87,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onClickShare(View view) {
-        showToast("in developing");
-        //Intent chosenIntent = Intent.createChooser(intent, getString(R.string.support_choser_title));
-        //startActivity(chosenIntent);
+        String msg = getString(R.string.app_name);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, msg);
+        String chooserTitle = getString(R.string.settings_choser_title);
+        Intent choosenIntent = Intent.createChooser(intent, chooserTitle);
+        startActivity(choosenIntent);
     }
 
     public void onClickVote(View view) {
@@ -105,8 +109,8 @@ public class SettingsActivity extends AppCompatActivity {
         showToast("Ivan Kosenkov");
     }
 
-    private void showToast(CharSequence text) {
-        int duraction = Toast.LENGTH_SHORT;
+    public void showToast(CharSequence text) {
+        int duraction = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(this, text, duraction);
         toast.show();
     }

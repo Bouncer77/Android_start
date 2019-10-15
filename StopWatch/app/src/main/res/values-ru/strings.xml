@@ -21,5 +21,5 @@
     <string name="settings_share">поделиться</string>
     <string name="settings_support">написать в техподдержку</string>
     <string name="settings_vote">проголосовать</string>
-    <string name="support_choser_title">Отправить сообщение через ...</string>
+    <string name="settings_choser_title">Отправить сообщение через ...</string>
 </resources>
