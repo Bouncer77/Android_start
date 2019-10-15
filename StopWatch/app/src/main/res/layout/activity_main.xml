@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:text="@string/init_time"
         android:textAppearance="@android:style/TextAppearance.Large"
@@ -22,8 +23,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,32 +34,42 @@
 
         <Button
             android:id="@+id/button_start"
-            android:layout_width="250dp"
-            android:layout_height="70dp"
-            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
             android:background="@color/colorOrange"
             android:onClick="onClickStartTimer"
             android:text="@string/button_start"
-            android:textColor="@color/colorGreen" />
+            android:textColor="@color/colorGreen"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button_pause"
-            android:layout_width="250dp"
-            android:layout_height="70dp"
-            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
             android:background="@color/colorOrange"
             android:onClick="onClickPauseTimer"
-            android:text="@string/button_pause" />
+            android:text="@string/button_pause"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button_reset"
-            android:layout_width="250dp"
-            android:layout_height="70dp"
-            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorRed"
             android:background="@color/colorOrange"
-            android:onClick="onClickResetTimer"
+            android:onClick="onClickPauseTimer"
             android:text="@string/button_reset"
-            android:textColor="@color/colorRed" />
+            android:textSize="24sp"
+            android:shadowColor="@color/colorDark"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -82,6 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"

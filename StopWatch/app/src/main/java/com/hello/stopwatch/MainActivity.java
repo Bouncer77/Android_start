@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -117,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickStartTimer(View view) {
         isRunning = true;
+
+        CharSequence text = getString(R.string.button_start);
+        int duraction = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(this, text, duraction);
+        toast.show();
     }
 
     public void onClickPauseTimer(View view) {
