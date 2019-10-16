@@ -9,7 +9,7 @@ tools:context=".MainActivity">
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
@@ -21,7 +21,6 @@ tools:context=".MainActivity">
         android:text="@string/init_time"
         android:textAppearance="@android:style/TextAppearance.Large"
         android:textSize="54sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,42 +37,31 @@ tools:context=".MainActivity">
         app:layout_constraintTop_toBottomOf="@+id/textViewTimer"
         app:layout_constraintVertical_bias="0.133">
 
-        <Button
-            android:id="@+id/button_start"
+        <ToggleButton
+            android:id="@+id/toggle_button_start_pause"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:background="@color/colorOrange"
-            android:onClick="onClickStartTimer"
-            android:text="@string/button_start"
+            android:onClick="onClickStartPauseTimer"
+            android:textOff="@string/button_start"
+            android:textOn="@string/button_pause"
             android:textColor="@color/colorGreen"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button_pause"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:background="@color/colorOrange"
-            android:onClick="onClickPauseTimer"
-            android:text="@string/button_pause"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <Button
             android:id="@+id/button_reset"
+            android:text="@string/button_reset"
+            android:drawableStart="@drawable/reset_48dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:background="@color/colorOrange"
             android:onClick="onClickResetTimer"
-            android:shadowColor="@color/colorDark"
-            android:text="@string/button_reset"
-            android:textColor="@color/colorRed"
+            android:textColor="@color/colorReset"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -81,13 +69,13 @@ tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="30dp"
         android:background="@color/colorOrange"
         android:contentDescription="@string/button_start"
         android:onClick="onClickOpenSettings"
-        android:layout_marginStart="30dp"
-        android:layout_gravity="start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.072"

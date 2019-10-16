@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.Locale;
 
@@ -23,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewSettingsInfo;
     private String language  = Locale.getDefault().getDisplayLanguage();; // your language
     private int spinnerlang = 0; // TODO написать номер языка в спинере настроки
+    private ToggleButton toggleButtonStartPause;
+    private Button buttonReset;
+
+    private MediaPlayer startSound, pauseSound, resetSound, startFirstSound;
+    private static int nstart = 0; // количество стартов (влияет на звук при старте)
 
 
     // таймер 1 (НЕ Выключается, когда активность перестает быть видимой для пользователя)
@@ -51,9 +61,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startFirstSound = MediaPlayer.create(this, R.raw.start);
+        startSound = MediaPlayer.create(this, R.raw.bstart);
+        pauseSound = MediaPlayer.create(this, R.raw.pause);
+        resetSound = MediaPlayer.create(this, R.raw.reset);
+
         textViewTimer = findViewById(R.id.textViewTimer);
+        toggleButtonStartPause = (ToggleButton) findViewById(R.id.toggle_button_start_pause);
+        buttonReset = (Button) findViewById(R.id.button_reset);
 
         textViewSettingsInfo = findViewById(R.id.textViewSettingsInfo);
+
+        if (nstart == 0) {
+            toggleButtonStartPause.setButtonDrawable(R.drawable.play_48dp);
+        }
 
         Intent intent = getIntent();
         background_running = (boolean) intent.getBooleanExtra(SWBACKGROUND, true);
@@ -132,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
         seconds = 0;
         milliseconds_timer = 0;
         showToast(getString(R.string.button_reset));
+        resetSound.start();
     }
 
     // Обновление показателей таймера
@@ -237,5 +259,33 @@ public class MainActivity extends AppCompatActivity {
         int duraction = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(this, text, duraction);
         toast.show();
+    }
+
+    public void onClickStartPauseTimer(View view) {
+
+
+
+        boolean on = toggleButtonStartPause.isChecked();
+        if (on) {
+            // Вкл
+            if (nstart == 0) {
+                startFirstSound.start();
+            } else {
+                startSound.start();
+            }
+            ++nstart;
+
+            toggleButtonStartPause.setButtonDrawable(R.drawable.ic_pause_circle_outline);
+            toggleButtonStartPause.setTextColor(getResources().getColor(R.color.colorRed));
+            isRunning = true;
+            showToast(getString(R.string.button_start));
+        } else {
+            // Выкл
+            pauseSound.start();
+            toggleButtonStartPause.setButtonDrawable(R.drawable.ic_play_arrow);
+            toggleButtonStartPause.setTextColor(getResources().getColor(R.color.colorGreen));
+            isRunning = false;
+            showToast(getString(R.string.button_pause));
+        }
     }
 }
