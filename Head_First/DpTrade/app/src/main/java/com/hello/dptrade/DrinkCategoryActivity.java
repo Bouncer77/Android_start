@@ -2,7 +2,9 @@ package com.hello.dptrade;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,8 +28,24 @@ public class DrinkCategoryActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1,
                 Drink.drinks);
 
-        ListView listDrinks = (ListView)findViewById(R.id.listViewWine);
+        ListView listDrinks = (ListView) findViewById(R.id.listViewWine);
         listDrinks.setAdapter(listAdapter);
+
+        // Создание слушателя
+        AdapterView.OnItemClickListener clickListenerWine =
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Передача напитка выбранного пользователем
+                        Intent intent = new Intent(DrinkCategoryActivity.this,
+                                DrinkActivity.class);
+                        intent.putExtra(DrinkActivity.EXTRA_DRINKED, (int) id);
+                        startActivity(intent);
+
+                    }
+                };
+        // Назначение слушателя для спискового представления
+        listDrinks.setOnItemClickListener(clickListenerWine);
 
     }
 

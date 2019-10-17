@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">DpTrade</string>
     <string name="starbuzz_logo">dp_trade_logo</string>
+    <string name="wine_categories_photo">Wine categories</string>
+
+    <string name="clarendelle_blanc_photo">Clarendelle Blanc</string>
+    <string name="clarendelle_rouge_photo">Clarendelle Rouge</string>
+    <string name="barbaresco_photo">Barbaresco</string>
+
+
 </resources>
