@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/colorOrange"
-tools:context=".MainActivity">
-
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/colorOrange"
+    tools:context=".MainActivity"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textViewTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="10"
         android:text="@string/init_time"
         android:textAppearance="@android:style/TextAppearance.Large"
         android:textSize="54sp"
@@ -25,78 +22,55 @@ tools:context=".MainActivity">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTimer"
-        app:layout_constraintVertical_bias="0.133">
-
-        <ToggleButton
-            android:id="@+id/toggle_button_start_pause"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:background="@color/colorOrange"
-            android:onClick="onClickStartPauseTimer"
-            android:textOff="@string/button_start"
-            android:textOn="@string/button_pause"
-            android:textColor="@color/colorGreen"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/button_reset"
-            android:text="@string/button_reset"
-            android:drawableStart="@drawable/reset_48dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="20dp"
-            android:layout_weight="1"
-            android:background="@color/colorOrange"
-            android:onClick="onClickResetTimer"
-            android:textColor="@color/colorReset"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="45dp"
-        android:layout_height="48dp"
-        android:layout_gravity="start"
-        android:layout_marginStart="30dp"
+    <ToggleButton
+        android:id="@+id/toggle_button_start_pause"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
         android:background="@color/colorOrange"
-        android:contentDescription="@string/button_start"
-        android:onClick="onClickOpenSettings"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="onClickStartPauseTimer"
+        android:textColor="@color/colorGreen"
+        android:textOff="@string/button_start"
+        android:textOn="@string/button_pause"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.123"
-        app:srcCompat="@drawable/settings" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+
+        android:background="@color/colorOrange"
+        android:drawableStart="@drawable/ic_reset_48dp"
+        android:onClick="onClickResetTimer"
+        android:text="@string/button_reset"
+        android:textColor="@color/colorReset"
+        android:textSize="24sp"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="@+id/imageViewSettings"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_button_start_pause" />
+
+
+    <ImageView
+        android:id="@+id/imageViewSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_settings_white_48dp"
+        android:contentDescription="@string/button_settings" />
 
     <TextView
         android:id="@+id/textViewSettingsInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="8dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintStart_toEndOf="@+id/imageViewSettings"
+        app:layout_constraintTop_toBottomOf="@+id/button_reset" />
 
 </LinearLayout>
-
-</ScrollView>
