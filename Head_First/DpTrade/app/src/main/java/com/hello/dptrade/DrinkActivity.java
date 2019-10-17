@@ -1,7 +1,6 @@
 package com.hello.dptrade;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ShareActionProvider;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -14,7 +13,10 @@ import android.widget.TextView;
 public class DrinkActivity extends AppCompatActivity {
 
     public static final String EXTRA_DRINKED = "drinkId";
-    private ShareActionProvider shareActionProvider;
+
+    private Drink drink;
+
+    private TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +30,10 @@ public class DrinkActivity extends AppCompatActivity {
 
         // Получить инф о соответствующей категории
         int drinkId = getIntent().getExtras().getInt(DrinkActivity.EXTRA_DRINKED);
-        Drink drink = Drink.drinks[drinkId];
+        drink = Drink.drinks[drinkId];
 
         // Получить ссылки на графические компоненты
-        TextView name = (TextView)findViewById(R.id.textViewWineName);
+        name = (TextView)findViewById(R.id.textViewWineName);
         TextView description = (TextView)findViewById(R.id.textViewDescription);
         ImageView photo = (ImageView)findViewById(R.id.imageViewWine);
 
@@ -53,9 +55,26 @@ public class DrinkActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_order:
-                Intent intent = new Intent(this, OrderActivity.class);
-                startActivity(intent);
+                Intent intentOrder = new Intent(this, OrderActivity.class);
+                startActivity(intentOrder);
                 return true; // Сообщает Android, что щелчок на элементе обработан
+
+            case R.id.action_share:
+                /*Intent intentShare = new Intent(Intent.ACTION_SEND);
+                //intentShare.setType("image/png");
+                intentShare.setType("text/plain");
+                intentShare.putExtra(Intent.EXTRA_TEXT, drink.getName());
+                intentShare.putExtra(Intent.EXTRA_SUBJECT, drink.getCountry());
+                //startActivity(intentShare);
+                startActivity(Intent.createChooser(intentShare, getResources().getString(R.string.app_name)));*/
+
+                Intent share = new Intent(android.content.Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
+                share.putExtra(Intent.EXTRA_TEXT, "Отправленно через приложение Dp Trade for Android OS\n" +
+                        "http://www.wine-dp-trade.ru/products/273");
+                startActivity(Intent.createChooser(share, "Share link!"));
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

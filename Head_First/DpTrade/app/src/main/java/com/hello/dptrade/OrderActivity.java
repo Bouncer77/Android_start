@@ -21,6 +21,7 @@ public class OrderActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Стрелка назад (На MainActivity)
+        // Cсылку на панель приложения методом getSupportActionBar() активности
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
