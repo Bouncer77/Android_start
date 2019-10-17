@@ -1,6 +1,7 @@
 package com.hello.dptrade;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +17,15 @@ public class DrinkCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink_category);
 
-        // simple_list_item_1
-        // Встроенный ресурс
-        //макета. Он приказыва-
-        //ет адаптеру массива
-        //отображать каждый
-        //элемент массива в виде
-        //надписи.
+        // Панель инструментов
+        // необходимый для замены простой панели приложения панелью инструментов.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        /* simple_list_item_1
+           Встроенный ресурс макета. Он приказывает адаптеру массива, как
+           отображать каждый элемент массива в виде надписи.*/
+        // Адаптер для чтения информации программно (так же можно из БД или сайта)
         ArrayAdapter<Drink> listAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,

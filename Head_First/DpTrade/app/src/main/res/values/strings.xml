@@ -7,5 +7,10 @@
     <string name="clarendelle_rouge_photo">Clarendelle Rouge</string>
     <string name="barbaresco_photo">Barbaresco</string>
 
+    <string name="tool_categories">Categories</string>
+    <string name="tool_create_order">Create Order</string>
+    <string name="tool_go_to_order">Go to order</string>
+    <string name="tool_action_share">Share</string>
+
 
 </resources>

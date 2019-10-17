@@ -1,6 +1,7 @@
 package com.hello.dptrade;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,14 +16,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Создать OnItemClickListener
+        // Панель инструментов (необходимый для замены простой панели приложения панелью инструментов)
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Создать OnItemClickListener (информация из string.xml)
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> listView,
                                     View itemView,
                                     int position,
                                     long rid) {
                 if (position == 0) {
-                    Intent intent = new Intent(MainActivity.this, DrinkCategoryActivity.class);
+                    Intent intent = new Intent(MainActivity.this,
+                            DrinkCategoryActivity.class);
                     startActivity(intent);
                 }
             }
