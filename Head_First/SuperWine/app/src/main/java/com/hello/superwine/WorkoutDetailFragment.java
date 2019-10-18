@@ -43,4 +43,19 @@ public class WorkoutDetailFragment extends Fragment {
     public void setWorkout(long id) {
         this.workoutId = id;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putLong("workoutId", workoutId);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            workoutId = savedInstanceState.getLong("workoutId");
+        }
+    }
+
+
 }
