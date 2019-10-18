@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="10"
+        android:layout_weight="1"
         android:text="@string/init_time"
         android:textAppearance="@android:style/TextAppearance.Large"
         android:textSize="54sp"
@@ -26,7 +26,8 @@
         android:id="@+id/toggle_button_start_pause"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
         android:background="@color/colorOrange"
         android:onClick="onClickStartPauseTimer"
         android:textColor="@color/colorGreen"
@@ -34,16 +35,14 @@
         android:textOn="@string/button_pause"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
 
     <Button
         android:id="@+id/button_reset"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-
+        android:layout_weight="1"
+        android:layout_margin="10dp"
         android:background="@color/colorOrange"
         android:drawableStart="@drawable/ic_reset_48dp"
         android:onClick="onClickResetTimer"
@@ -51,7 +50,6 @@
         android:textColor="@color/colorReset"
         android:textSize="24sp"
         android:textStyle="bold"
-
         app:layout_constraintStart_toStartOf="@+id/imageViewSettings"
         app:layout_constraintTop_toBottomOf="@+id/toggle_button_start_pause" />
 
@@ -60,6 +58,7 @@
         android:id="@+id/imageViewSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClickOpenSettings"
         app:srcCompat="@drawable/ic_settings_white_48dp"
         android:contentDescription="@string/button_settings" />
 
