@@ -1,6 +1,8 @@
 package com.hello.stopwatch;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Support extends AppCompatActivity {
+public class SupportActivity extends AppCompatActivity {
 
     private EditText editTextSubject;
     private EditText editTextMsg;
@@ -19,6 +21,13 @@ public class Support extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Стрелка назад
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         editTextMsg = findViewById(R.id.editTextMSG);
         editTextSubject = findViewById(R.id.editTextEmailSubject);

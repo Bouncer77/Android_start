@@ -9,6 +9,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -32,6 +33,9 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         selectLang = (Spinner) findViewById(R.id.spinnerLanguage);
         swbackgroundRun = (Switch) findViewById(R.id.switchBackground);
@@ -101,7 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onClickSupport(View view) {
-        Intent intent = new Intent(this, Support.class);
+        Intent intent = new Intent(this, SupportActivity.class);
         startActivity(intent);
     }
 

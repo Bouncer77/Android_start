@@ -22,4 +22,5 @@
     <string name="settings_support">написать в техподдержку</string>
     <string name="settings_vote">проголосовать</string>
     <string name="settings_choser_title">Отправить сообщение через ...</string>
+    <string name="title_activity_support">Помощь</string>
 </resources>
