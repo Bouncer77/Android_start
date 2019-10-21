@@ -1,0 +1,71 @@
+Пользовательский интерфейс состоит из макетов и компонентов графического интерфейса (кнопки, текстовые поля и т. д)
+
+Атрибут
+
+xmlns:android 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	определяет пространство имен Android
+
+android:layout_width - ширина
+android:layout_height - высота
+	"wrap_content"
+		размеры макета должны быть минимально достаточными для того, чтобы разместить все представления
+	"match_parent"
+		размеры макета выбираются по размерам родителя
+	"8dp" 
+		(8 аппаратно-независимых пикселов) Размеры, выраженные в аппаратно-независимых пикселах, приблизительно одинаковы на всех устройствах.
+
+android:orientation - оринтация размещения компонентов в Layout
+	"vertical"
+	"horizontal"
+
+android:padding - расстояние должно отделять края макета от родителя
+	android:padding="8dp" - Со всех сторон
+	android:paddingBottom="16dp" - Снизу
+	android:paddingLeft="16dp" - Слева
+	android:paddingRight="16dp" - Справа
+	android:paddingTop="32dp" - Сверху
+
+Отступы для Layout
+app/src/main/res/values/dimens.xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="activity_horizontal_margin">16dp</dimen>
+	<dimen name="activity_vertical_margin">16dp</dimen>
+</resources>
+
+<LinearLayout ...
+android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:paddingBottom="@dimen/activity_vertical_margin">
+
+интервалы между компонентами
+android:layout_marginTop="48dp"
+	Добавляет дополнительный интервал у верхнего края представления.
+Атрибут 				Что делает
+layout_marginTop 		Добавляет дополнительный интервал у верхнего края представления.
+layout_marginBottom 	Добавляет дополнительный интервал у нижнего края представления.
+
+layout_marginLeft, 		Добавляет дополнительный интервал у левого (или начального) края представления.
+layout_marginStart 
+
+layout_marginRight,		Добавляет дополнительный интервал у правого (или конечного) края представления.
+layout_marginEnd
+
+layout_margin 			Добавляет равные интервалы у всех краев представления.
+
+весовой коэффициент, или вес.
+	 Назначение весов — способ приказать представлению занять дополнительное пространство в макете.
+android:layout_weight="number" // где число — некоторое положительное значение.
+
+android:gravity позволяет указать, как содержимое
+	должно размещаться внутри представления — например, как текст должен позиционироваться в текстовом поле
+android:gravity="top"
+
+Письмо справа налево: (SDK не менее API 17)
+	android:supportsRtl="true"> .. в файле манифеста
+	android:paddingStart="16dp"
+	android:paddingEnd="16dp"
+
+

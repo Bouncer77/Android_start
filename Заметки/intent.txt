@@ -1,0 +1,15 @@
+стр 147
+Чтобы разре-
+шить его отображение, перейдите в раздел Settings → About
+Phone и прикоснитесь к номеру сборки семь раз. Когда вы
+вернетесь к предыдущему экркау, на нем должен появиться
+раздел «Developer options».
+
+стр 209
+xmlns:android
+Атрибут
+определяет пространство имен Android, и ему всегда
+должно быть присвоено значение
+"http://schemas.android.com/apk/res/android".
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
