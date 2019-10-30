@@ -1,0 +1,137 @@
+exceptions in java / Исключения в Java
+java.lang.*
+Object -> Throwable -> Error
+					-> Exception -> RuntimeException
+
+java.lang.Throwable
+Базовый класс для всех исключений
+
+java.lang.Exception
+Базовый класс для проверяемых исключений, соответствующих ошибкам программной логики
+
+java.lang.RuntimeException
+Базовый класс для непроверяемых исключений, соответствующих ошибкам программной логики
+
+java.lang.Error
+Базовый класс для исключений, соответствующих ошибкам виртуальной машины
+
+java.lang.Error (Ошибки на JVM)
+java.lang.Exception (checked (проверяемые))
+java.lang.RuntimeException (unchecked (непроверяемые))
+
+Throwable
+Стек трейс брошенного исключения определяется тем, где был создан экземпляр исключения, а не откуда оно было выброшенно.
+
+Error (Ошибки на JVM)
+1. OutOfMemoryError 
+JVM не хватило памяти
+2. NoClassDefFoundError
+JVM не нашла класс
+3. VerifyError
+В классе что-то не так с байткодом
+
+Exception
+1. IOException
+Ошибка ввода-вывода
+2. IllegalArgumentException
+Недопустимое значение аргумента
+
+RuntimeException 
+(не требуеся явно декларировать или обрабатывать)
+1. NullPointerException
+Обращение по нулевой ссылке
+2. ArrayIndexOutOfBoundsException
+Выход за границы массива
+3. ArithmeticException
+При деление на ноль
+
+При наследование или реализации интерфейса нельзя декларировать переопределенному методу больше проверяемых исключений, чем указано у базавого метода, это нарушает контракт базового класса, зато можно в переопределенном методе бросать меньше исключений, чем у родителя.
+
+Точка входа в программу - метод main может декларировать и бросать любые проверяемые исключения, все что вылетет из main приведет к распечатке стек-трейса и остановке программы
+
+throw new IllegalStateException("Msg");
+
+public class Throwable {
+	// Вернуть текстовую строку с описание проблемы
+	public String getMessage() {...}
+
+	// Печатает стек-трейс в стандартный поток ошибок
+	public void printStackTrace() {...}
+
+	// Возвращает стек-трейс в виде массива java объектов
+	public StackTraceElement[] getStackTrace() {...}
+	/* StackTraceElement содержит 
+	имя класса 
+	имя метода
+	имя файла
+	номер строки
+
+	stackTraceElements[2].getClassName()stackTraceElements[2].getMethodName()
+	*/
+
+	// Вернуть исключение явивщееся причиной данного исключения или null
+	public Throwable getCause() {...}
+
+	// Вернуть заглушенные исключения
+	public Throwable[] getSuppressed() {...}
+}
+
+Java Exception Handling / Обработка исключений в java
+try {
+тут могут случаться исключения
+// выберается первый из подходящих
+} catch (класс_исключения имя_переменной) {
+	код обработчика исключения
+} catch () {
+	
+}
+
+Начиная с Java 7 - Обработка нескольких типов исключений в одном блоке
+try {} catch (FirstException | SecondException e) {}
+
+<legacy>
+Блок finally выполняется в любом случае
+try {} catch() {} finaly {file.close();}
+Если из finaly будет выброшенно исключение, то оно заменит собой исключение из блока try, ниже приведен патерн для решения этого
+try {
+	
+} finaly {
+	try {
+		is.close();
+	} catch (IOException e) {
+		// ignore
+	}
+}
+</legacy>
+
+try(выделение ресурса1; ресурса2; ресурса3) с ресурсами
+try (InputStream is = new FileinputStream("a.txt")) {
+	readFromInputStream(is);
+} // автоматически close() на каждом из ресурсов
+// исключение при is.close не перебивает исключение из try
+// а добавляется в него в качестве заглушенного (suppresed)
+
+// код ниже почти равносилен try с ресурсами
+InputStream is = new FileInputStream("a.txt");
+try {
+	readFromInputStream(is);
+} catch (Throwable t) {
+	try {
+		is.close();
+	} catch(Throwable t2) {
+		t.addSuppressed();
+	}
+	throw t;
+}
+is.close();
+
+Ресурс - любой объект реализующий интерфейс AutoCloseble
+package java.lang;
+public interface AutoCloseable {
+	void close() throws Exception;
+}
+
+
+
+
+

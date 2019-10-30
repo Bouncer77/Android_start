@@ -1,0 +1,38 @@
+Файл манифеста
+
+Фильтр интентов сообщает Android, какие активности могут обработать те или иные действия (143)
+
+При использовании неявного интента система Android использует информацию, содержащуюся в интенте, для определения того, какие компоненты могут его получить. Для этого Android проверяет фильтры интентов, содержащиеся в экземплярах AndroidManifest.xml.
+
+Фильтр интентов указывает, какие типы интентов могут обрабатываться каждым компонентом.
+<intent-filter>
+
+Указывает, что это главная активность приложения.
+<action android:name="android.intent.action.MAIN" />
+
+Сообщает, что активность может использоваться для запуска приложения. (Категория предоставляет дополнительную информацию об активности: например, может ли она запускаться браузером или является ли она главной точкой входа приложения.)
+<category android:name="android.intent.category.LAUNCHER" />
+
+Сообщает Android, что активность может обрабатывать ACTION_SEND.
+<action android:name="android.intent.action.SEND"/>
+
+Фильтр интентов должен включать категорию DEFAULT; в противном случае он не сможет получать неявные интенты.
+(Фильтр интентов должен включать категорию android.intent.category.DEFAULT, если он собирается принимать неявные интенты.)
+<category android:name="android.intent.category.DEFAULT"/>
+
+Типы данных, которые могут обрабатываться активностью.
+<data android:mimeType="text/plain"/>
+<data android:mimeType="image/*"/>
+
+</intent-filter>
+
+
+Пример: 
+<activity android:name="ShareActivity">
+	<intent-filter>
+		<action android:name="android.intent.action.SEND"/>
+		<category android:name="android.intent.category.DEFAULT"/>
+		<data android:mimeType="text/plain"/>
+		<data android:mimeType="image/*"/>
+	</intent-filter>
+</activity>
