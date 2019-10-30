@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Energy Wine</string>
+    <string name="alcohol">Алкоголь</string>
+    <string name="sugar">Сахар</string>
+    <string name="formulas">Формулы:\n
+        Углеводы = Сахар / 10\n
+        Ккал = Алкоголь * 5.6 + Сахар * 0.4\n
+        кДж = Ккад * 4.1868
+    </string>
+    <string name="button_calculate">Рассчитать</string>
+    <string name="toast_fields_filled">Все поля должны быть заполнены</string>
+    <string name="procent_sign">%</string>
+    <string name="suger_metric">г/дм^3</string>
+    <string name="carbohydrates">Углеводы:</string>
+    <string name="empty" />
+    <string name="gramm">г.</string>
+    <string name="delimer_kj">КДЖ    /</string>
+    <string name="metric_kkal">ККАЛ</string>
+    <string name="energy">Энергетическая ценность:</string>
+    <string name="alc">АЛК:</string>
+    <string name="sug">CАХ:</string>
+</resources>
