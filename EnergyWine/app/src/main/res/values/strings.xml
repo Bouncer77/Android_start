@@ -5,7 +5,7 @@
     <string name="formulas">Формулы:\n
         Углеводы = Сахар / 10\n
         Ккал = Алкоголь * 5.6 + Сахар * 0.4\n
-        кДж = Ккад * 4.1868
+        кДж = Ккал * 4.1868
     </string>
     <string name="button_calculate">Рассчитать</string>
     <string name="toast_fields_filled">Все поля должны быть заполнены</string>

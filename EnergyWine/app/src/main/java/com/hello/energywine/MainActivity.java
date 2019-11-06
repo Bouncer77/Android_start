@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
                     double sugar = Double.parseDouble(sugarText);
 
                     resCarbo = BigDecimal.valueOf(calculateСarbohydrates(sugar))
-                            .setScale(1, RoundingMode.HALF_EVEN)
+                            .setScale(2, RoundingMode.HALF_UP)
                             .toString();
-                    resKdj = String.valueOf((int) Math.round(calculateEnergyValue(alco, sugar, "kcal")));
-                    resKkal = String.valueOf((int) Math.round(calculateEnergyValue(alco, sugar, "kj")));
+                    resKdj = String.valueOf((int) Math.round(calculateEnergyValue(alco, sugar, "kj")));
+                    resKkal = String.valueOf((int) Math.round(calculateEnergyValue(alco, sugar, "kcal")));
 
                     textViewCarbohydrates.setText(resCarbo);
                     textViewKdj.setText(resKdj);
