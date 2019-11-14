@@ -1,6 +1,7 @@
 package com.hello.bitsandpizza;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.tabs.TabLayout;
+
 import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,34 +25,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
-        FragmentPagerAdapter pagerAdapter =
-                new FragmentPagerAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-                    @NonNull
-                    @Override
-                    public Fragment getItem(int position) {
-                        switch (position) {
-                            case 0:
-                                return new TopFragment();
-                            case 1:
-                                return new PizzaFragment();
-                            case 2:
-                                return new PastaFragmen();
-                            case 3:
-                                return new StoresFragment();
-                        }
-                        return new TopFragment();
-                    }
+        SectionPagerAdapter sectionPagerAdapter =
+                new SectionPagerAdapter(
+                        this,
+                        getSupportFragmentManager()
+                );
 
-                    @Override
-                    public int getCount() {
-                        return 4;
-                    }
-                };
-        ViewPager pager = findViewById(R.id.pager);
-        pager.setAdapter(pagerAdapter);
+        ViewPager viewPager = findViewById(R.id.pager);
+        viewPager.setAdapter(sectionPagerAdapter);
+
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -72,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                     return super.onOptionsItemSelected(item);
         }
     }
+
+
+
 }
 
 
