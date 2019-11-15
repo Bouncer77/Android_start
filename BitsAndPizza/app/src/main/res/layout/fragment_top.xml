@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/home_text" />
         </LinearLayout>
+
     </FrameLayout>
 
 </androidx.core.widget.NestedScrollView>
