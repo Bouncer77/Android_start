@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,10 +54,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_create_order:
-                Toast toast = Toast.makeText(getApplicationContext(),
+                /*Toast toast = Toast.makeText(getApplicationContext(),
                         "This is a message displayed in a Toast",
                         Toast.LENGTH_SHORT);
-                toast.show();
+                toast.show();*/
+                Intent intent = new Intent(this, OrderActivity.class);
+                startActivity(intent);
                 return true;
             default:
                     return super.onOptionsItemSelected(item);
